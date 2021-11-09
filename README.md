@@ -11,7 +11,7 @@
 ## Поиск по логину в БД
 
 **Запрос** 
-```http
+```
 http://192.168.26.128/person?login=morbi@nullaintincidunt.edu
 ```
 **Вывод**
@@ -26,12 +26,13 @@ http://192.168.26.128/person?login=morbi@nullaintincidunt.edu
 ## Поиск по маске в БД
 
 **Запрос** 
-```http
+```
 http://192.168.26.128/person?search&first_name=K&last_name=C
 ```
 
 <details>
-<summary>**Вывод**</summary>
+<summary><b>Вывод</b></summary>
+
 ```json
 [
     {
@@ -77,7 +78,7 @@ http://192.168.26.128/person?search&first_name=K&last_name=C
 import json
 import requests
 
-url = '192.168.26.128/persom'
+url = '192.168.26.128/person'
 data = {'login': 'Ryzhtis',
         'first_name': 'Arsenii',
         'last_name': 'Shkunkov',
@@ -107,8 +108,10 @@ mysql> select * from Person where login='Ryzhtus';
 ```
 
 # Попытка обращения к БД
+При попытке обращения к БД без указания прописанных параметров поиска и метода, получаем Invalid request.
+
 **Запрос**
-```http
+```
 192.168.26.128/person?
 ```
 

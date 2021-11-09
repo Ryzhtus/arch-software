@@ -48,6 +48,28 @@ using Poco::Util::ServerApplication;
 class PersonHandler : public HTTPRequestHandler
 {
 private:
+    bool check_login(const std::string &login, std::string &reason) {
+        if (login.length() < 3)
+        {
+            reason = "Login must be at least 3 signs";
+            return false;
+        }
+
+        if (login.find(' ') != std::string::npos)
+        {
+            reason = "Login can't contain spaces";
+            return false;
+        }
+
+        if (login.find('\t') != std::string::npos)
+        {
+            reason = "Login can't contain spaces";
+            return false;
+        }
+
+        return true;
+    }
+
     bool check_name(const std::string &name, std::string &reason)
     {
         if (name.length() < 3)
@@ -70,6 +92,20 @@ private:
 
         return true;
     };
+
+    bool check_age(const int &age, std::string reason) {
+        if (age <= 0) {
+            reason = "Age can't be a negative number or be equal to zero";
+            return false;
+        }
+
+        if (age > 120) {
+            reason = "Wow! Please contact the admin";
+            return false;
+        }
+
+        return true;
+    }
 
 public:
     PersonHandler(const std::string &format) : _format(format)
@@ -132,6 +168,14 @@ public:
             std::string message;
             std::string reason;
 
+            if (!check_login(person.get_login(), reason))
+            {
+                check_result = false;
+                message += reason;
+                message += "<br>";
+            }
+
+
             if (!check_name(person.get_first_name(), reason))
             {
                 check_result = false;
@@ -140,6 +184,13 @@ public:
             }
 
             if (!check_name(person.get_last_name(), reason))
+            {
+                check_result = false;
+                message += reason;
+                message += "<br>";
+            }
+
+            if (!check_age(person.get_age(), reason))
             {
                 check_result = false;
                 message += reason;

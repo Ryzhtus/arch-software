@@ -97,10 +97,24 @@ CMakeFiles/hw1.dir/config/config.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hw1.dir/config/config.cpp.s"
 	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stud/src/hw_1/config/config.cpp -o CMakeFiles/hw1.dir/config/config.cpp.s
 
+CMakeFiles/hw1.dir/database/cache.cpp.o: CMakeFiles/hw1.dir/flags.make
+CMakeFiles/hw1.dir/database/cache.cpp.o: ../database/cache.cpp
+CMakeFiles/hw1.dir/database/cache.cpp.o: CMakeFiles/hw1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stud/src/hw_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/hw1.dir/database/cache.cpp.o"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hw1.dir/database/cache.cpp.o -MF CMakeFiles/hw1.dir/database/cache.cpp.o.d -o CMakeFiles/hw1.dir/database/cache.cpp.o -c /home/stud/src/hw_1/database/cache.cpp
+
+CMakeFiles/hw1.dir/database/cache.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hw1.dir/database/cache.cpp.i"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stud/src/hw_1/database/cache.cpp > CMakeFiles/hw1.dir/database/cache.cpp.i
+
+CMakeFiles/hw1.dir/database/cache.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hw1.dir/database/cache.cpp.s"
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stud/src/hw_1/database/cache.cpp -o CMakeFiles/hw1.dir/database/cache.cpp.s
+
 CMakeFiles/hw1.dir/database/database.cpp.o: CMakeFiles/hw1.dir/flags.make
 CMakeFiles/hw1.dir/database/database.cpp.o: ../database/database.cpp
 CMakeFiles/hw1.dir/database/database.cpp.o: CMakeFiles/hw1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stud/src/hw_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/hw1.dir/database/database.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stud/src/hw_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/hw1.dir/database/database.cpp.o"
 	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hw1.dir/database/database.cpp.o -MF CMakeFiles/hw1.dir/database/database.cpp.o.d -o CMakeFiles/hw1.dir/database/database.cpp.o -c /home/stud/src/hw_1/database/database.cpp
 
 CMakeFiles/hw1.dir/database/database.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/hw1.dir/database/database.cpp.s: cmake_force
 CMakeFiles/hw1.dir/database/person.cpp.o: CMakeFiles/hw1.dir/flags.make
 CMakeFiles/hw1.dir/database/person.cpp.o: ../database/person.cpp
 CMakeFiles/hw1.dir/database/person.cpp.o: CMakeFiles/hw1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stud/src/hw_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/hw1.dir/database/person.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stud/src/hw_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/hw1.dir/database/person.cpp.o"
 	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hw1.dir/database/person.cpp.o -MF CMakeFiles/hw1.dir/database/person.cpp.o.d -o CMakeFiles/hw1.dir/database/person.cpp.o -c /home/stud/src/hw_1/database/person.cpp
 
 CMakeFiles/hw1.dir/database/person.cpp.i: cmake_force
@@ -129,6 +143,7 @@ CMakeFiles/hw1.dir/database/person.cpp.s: cmake_force
 hw1_OBJECTS = \
 "CMakeFiles/hw1.dir/main.cpp.o" \
 "CMakeFiles/hw1.dir/config/config.cpp.o" \
+"CMakeFiles/hw1.dir/database/cache.cpp.o" \
 "CMakeFiles/hw1.dir/database/database.cpp.o" \
 "CMakeFiles/hw1.dir/database/person.cpp.o"
 
@@ -137,6 +152,7 @@ hw1_EXTERNAL_OBJECTS =
 
 hw1: CMakeFiles/hw1.dir/main.cpp.o
 hw1: CMakeFiles/hw1.dir/config/config.cpp.o
+hw1: CMakeFiles/hw1.dir/database/cache.cpp.o
 hw1: CMakeFiles/hw1.dir/database/database.cpp.o
 hw1: CMakeFiles/hw1.dir/database/person.cpp.o
 hw1: CMakeFiles/hw1.dir/build.make
@@ -151,7 +167,7 @@ hw1: /usr/local/lib/libPocoFoundation.so.80
 hw1: /usr/lib/x86_64-linux-gnu/libssl.so
 hw1: /usr/lib/x86_64-linux-gnu/libcrypto.so
 hw1: CMakeFiles/hw1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stud/src/hw_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable hw1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stud/src/hw_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable hw1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hw1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

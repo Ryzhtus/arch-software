@@ -218,6 +218,30 @@ config/config.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/config/config.cpp.s
 .PHONY : config/config.cpp.s
 
+database/cache.o: database/cache.cpp.o
+.PHONY : database/cache.o
+
+# target to build an object file
+database/cache.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/database/cache.cpp.o
+.PHONY : database/cache.cpp.o
+
+database/cache.i: database/cache.cpp.i
+.PHONY : database/cache.i
+
+# target to preprocess a source file
+database/cache.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/database/cache.cpp.i
+.PHONY : database/cache.cpp.i
+
+database/cache.s: database/cache.cpp.s
+.PHONY : database/cache.s
+
+# target to generate assembly for a file
+database/cache.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/database/cache.cpp.s
+.PHONY : database/cache.cpp.s
+
 database/database.o: database/database.cpp.o
 .PHONY : database/database.o
 
@@ -308,6 +332,9 @@ help:
 	@echo "... config/config.o"
 	@echo "... config/config.i"
 	@echo "... config/config.s"
+	@echo "... database/cache.o"
+	@echo "... database/cache.i"
+	@echo "... database/cache.s"
 	@echo "... database/database.o"
 	@echo "... database/database.i"
 	@echo "... database/database.s"

@@ -1,2 +1,11 @@
 .vscode/
 build/
+build/CMakeCache.txt
+build/CMakeCache.txt
+build/compile_commands.json
+build/CMakeCache.txt
+build/compile_commands.json
+build/CPackConfig.cmake
+build/CPackSourceConfig.cmake
+build/hw1
+build/Makefile

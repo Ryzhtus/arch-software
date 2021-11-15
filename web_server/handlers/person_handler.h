@@ -124,14 +124,35 @@ public:
         if (request.getMethod() == "GET" && form.has("login"))
         {
             std::string login = form.get("login").c_str();
-            try
-            {
+            
+            bool no_cache = false;
+
+            if (form.has("no_cache")) {
+                no_cache = true;
+            }
+
+            if (no_cache == true) {
+                try {
+                    database::Person result = database::Person::read_from_cache_by_login(login);
+                    std::cout << "Item from cache:" << login << std::endl;
+                    Poco::JSON::Stringifier::stringify(result.toJSON(), ostr);
+                    return;
+                }
+                catch (...) {
+                    std::cout << "Cache missed for login:" << login << std::endl;
+                }
+            }
+
+            try {
                 database::Person result = database::Person::read_by_login(login);
+
+                if (no_cache == false)
+                    result.save_to_cache();
+
                 Poco::JSON::Stringifier::stringify(result.toJSON(), ostr);
                 return;
             }
-            catch (...)
-            {
+            catch (...) {
                 ostr << "{ \"result\": false , \"reason\": \"not found\" }";
                 return;
             }
@@ -202,6 +223,7 @@ public:
                 try
                 {   
                     person.save_to_mysql();
+                    person.save_to_cache();
                     ostr << "{ \"result\": true }";
                     return;
                 }

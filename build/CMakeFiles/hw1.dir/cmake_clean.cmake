@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hw1.dir/config/config.cpp.o"
   "CMakeFiles/hw1.dir/config/config.cpp.o.d"
+  "CMakeFiles/hw1.dir/database/cache.cpp.o"
+  "CMakeFiles/hw1.dir/database/cache.cpp.o.d"
   "CMakeFiles/hw1.dir/database/database.cpp.o"
   "CMakeFiles/hw1.dir/database/database.cpp.o.d"
   "CMakeFiles/hw1.dir/database/person.cpp.o"

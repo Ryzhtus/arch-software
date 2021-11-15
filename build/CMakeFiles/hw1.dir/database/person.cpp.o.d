@@ -305,6 +305,7 @@ CMakeFiles/hw1.dir/database/person.cpp.o: \
  /usr/local/include/Poco/Thread_POSIX.h \
  /usr/local/include/Poco/SignalHandler.h /usr/include/setjmp.h \
  /usr/local/include/Poco/Data/StatementCreator.h \
+ /home/stud/src/hw_1/database/cache.h \
  /home/stud/src/hw_1/database/../config/config.h \
  /usr/local/include/Poco/Data/RecordSet.h \
  /usr/local/include/Poco/Data/RowIterator.h \

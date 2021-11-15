@@ -1,18 +1,24 @@
-Первое домашнее задание по курсу Архитектура ПО
+Второе домашнее задание по курсу Архитектура ПО
 # Домашняя работа по курсу Архитектура ПО
 **Автор:** Шкунков Арсений
 
-# Запуск сервера
+# Запуск
+### Запускаем Docker
+```console
+cd docker
+docker-compose up -d
+```
+### Запускаем сервер
 ```console
 ./start.sh
 ```
 
 # Методы GET
-## Поиск по логину в БД
+## Поиск по логину в БД с кэшем
 
 **Запрос** 
 ```
-http://192.168.26.128/person?login=morbi@nullaintincidunt.edu
+http://192.168.26.128/person?login=morbi@nullaintincidunt.edu&no_cache=1
 ```
 **Вывод**
 ```json
@@ -23,53 +29,10 @@ http://192.168.26.128/person?login=morbi@nullaintincidunt.edu
     "login": "morbi@nullaintincidunt.edu"
 }
 ```
-## Поиск по маске в БД
-
-**Запрос** 
+**В консоли**
 ```
-http://192.168.26.128/person?search&first_name=K&last_name=C
+Item from cache:morbi@nullaintincidunt.edu
 ```
-
-<details>
-<summary><b>Вывод</b></summary>
-
-```json
-[
-    {
-        "age": 60,
-        "first_name": "Keelie",
-        "last_name": "Carver",
-        "login": "mauris.ut.quam@orci.com"
-    },
-    {
-        "age": 28,
-        "first_name": "Kennedy",
-        "last_name": "Carney",
-        "login": "imperdiet.dictum@tellussuspendisse.org"
-    },
-    {
-        "age": 35,
-        "first_name": "Kirby",
-        "last_name": "Crane",
-        "login": "amet@lobortis.ca"
-    },
-    {
-        "age": 64,
-        "first_name": "Knox",
-        "last_name": "Carver",
-        "login": "ultrices.sit@urna.org"
-    },
-    {
-        "age": 19,
-        "first_name": "Kylan",
-        "last_name": "Charles",
-        "login": "proin@pharetranamac.org"
-    }
-]
-```
-</details>
-
-<br>
 
 # Метод POST
 ## Добавление пользователя в БД
@@ -94,28 +57,20 @@ r = requests.post(url, data=json.dumps(payload))
 }
 ```
 
-**Проверка наличия логина в БД**
-```sql
-mysql> select * from Person where login='Ryzhtus';
+**Проверка наличия логина в БД с помощью кэша**
+```
+192.168.26.128/person?login=Ryzhtus&no_cache=1
 ```
 **Вывод**
+```json
+{
+    "age": 23,
+    "first_name": "Arsenii",
+    "last_name": "Shkunkov",
+    "login": "Ryzhtus"
+}
 ```
-+---------+------------+-----------+-----+
-| login   | first_name | last_name | age |
-+---------+------------+-----------+-----+
-| Ryzhtus | Arsenii    | Shkunkov  |  23 |
-+---------+------------+-----------+-----+
+**В консоли**
 ```
-
-# Попытка обращения к БД
-При попытке обращения к БД без указания прописанных параметров поиска и метода, получаем Invalid request.
-
-**Запрос**
-```
-192.168.26.128/person?
-```
-
-**Вывод**
-```
-Invalid request.
+Item from cache:Ryzhtus
 ```

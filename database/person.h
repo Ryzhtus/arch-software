@@ -15,7 +15,8 @@ namespace database
             int _age;
 
         public:
-            static Person fromJSON(const std::string & str);
+            static Person fromJSON(const std::string& str);
+            static void preload(const std::string& str);
 
             std::string get_login() const;
             const std::string &get_first_name() const;

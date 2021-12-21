@@ -8,6 +8,7 @@
 #include <Poco/Data/RecordSet.h>
 #include <Poco/JSON/Parser.h>
 #include <Poco/Dynamic/Var.h>
+#include <cppkafka/cppkafka.h>
 
 #include <sstream>
 #include <exception>
@@ -22,7 +23,7 @@ namespace database {
     void Person::init() {
         try {
 
-            Poco::Data::Session session = database::Database::get().create_session();
+            Poco::Data::Session session = database::Database::get().create_session_write();
             //*
             Statement drop_stmt(session);
             drop_stmt << "DROP TABLE IF EXISTS Person", now;
@@ -126,7 +127,7 @@ namespace database {
 
     Person Person::read_by_login(std::string login) {
         try {
-            Poco::Data::Session session = database::Database::get().create_session();
+            Poco::Data::Session session = database::Database::get().create_session_read();
             Poco::Data::Statement select(session);
             Person person;
             select << "SELECT login, first_name, last_name, age FROM Person where login=?",
@@ -157,7 +158,7 @@ namespace database {
 
     std::vector<Person> Person::read_all() {
         try {
-            Poco::Data::Session session = database::Database::get().create_session();
+            Poco::Data::Session session = database::Database::get().create_session_read();
             Statement select(session);
             std::vector<Person> result;
             Person person;
@@ -188,7 +189,7 @@ namespace database {
 
     std::vector<Person> Person::search(std::string first_name, std::string last_name) {
         try {
-            Poco::Data::Session session = database::Database::get().create_session();
+            Poco::Data::Session session = database::Database::get().create_session_read();
             Statement select(session);
             std::vector<Person> result;
             Person person;
@@ -221,12 +222,25 @@ namespace database {
         }
     }
 
+    void Person::send_to_queue() {
+        cppkafka::Configuration config = {
+            {"metadata.broker.list", Config::get().get_queue_host()}
+        };
+    
+        cppkafka::Producer producer(config);
+        std::stringstream ss;
+        Poco::JSON::Stringifier::stringify(toJSON(), ss);
+        std::string message = ss.str();
+        producer.produce(cppkafka::MessageBuilder(Config::get().get_queue_topic()).partition(0).payload(message));
+        producer.flush();
+    }
+
    
     void Person::save_to_mysql() {
 
         try
         {
-            Poco::Data::Session session = database::Database::get().create_session();
+            Poco::Data::Session session = database::Database::get().create_session_write();
             Poco::Data::Statement insert(session);
 
             insert << "INSERT INTO Person (login,first_name,last_name,age) VALUES(?, ?, ?, ?)",

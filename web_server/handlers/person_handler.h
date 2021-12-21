@@ -136,25 +136,6 @@ public:
                 return;
             }
         }
-        else if (request.getMethod() == "GET" && form.has("search"))
-        {
-            try
-            {
-                std::string  fn = form.get("first_name");
-                std::string  ln = form.get("last_name");
-                auto results = database::Person::search(fn,ln);
-                Poco::JSON::Array arr;
-                for (auto s : results)
-                    arr.add(s.toJSON());
-                Poco::JSON::Stringifier::stringify(arr, ostr);
-            }
-            catch (...)
-            {
-                ostr << "{ \"result\": false , \"reason\": \"not found\" }";
-                return;
-            }
-            return;
-        }
         else if (request.getMethod() == "POST" && form.has("add") && form.has("login") && form.has("first_name") && form.has("last_name") && form.has("age"))
         {
             database::Person person;
@@ -201,7 +182,8 @@ public:
             {
                 try
                 {   
-                    person.save_to_mysql();
+                    // person.save_to_mysql();
+                    person.send_to_queue();
                     ostr << "{ \"result\": true }";
                     return;
                 }
